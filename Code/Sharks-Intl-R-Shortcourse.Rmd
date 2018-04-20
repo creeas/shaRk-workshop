@@ -22,16 +22,302 @@ These heading 2 entries will expand when you are on this section of the tutorial
 ##Other stuff
 
 
-#R Basics
+#R Basics, Objects, Operators
+```{r R basics}
+#Annote your files by using # before the text 
+#save you R code with ctrl s
+#save your objects (top right hand panel)
 
-##Data, Objects, Operators
+#create an object "a" using the <-
+a <- 1+1
+#what is a
+a
 
-#Importing and plotting data
+#overwrite a, R will not tell you if you overwrite an object
+a <- 10
+a
 
-##Brain Dataset
+#create an object with more than one value
+b <- c(10,1,6,0)
+b
 
-```{r load data}
+#How do you create an object "a" that is two values 1 and 2?
+a<-c(1,2)
+a
 
+#overwrite b to be object a
+b <-a
+b
+
+#you can also define objects using math operators
+a<-3*3
+a
+
+a <- c(1,10,1)
+a
+x <- mean(a)
+x
+y <-sum(a)
+y
+y <-max(a)
+y
+
+#if you run the following line of code, what happens?
+#what does the error message mean?
+a<-3*
+
+
+  
+
+```
+
+
+
+#Importing
+```{r importing data}
+#load up the csv file brain.data
+#R generally works with .csv files
+#in your File explorer navigate to the folder with your the brain.data.csv in it
+
+#You can set the working directory (setwd) so that R will automatically check that folder. If you file is not in the folder that you setwd to, you will get an error
+
+getwd() #what working directory is R working from?
+setwd("C:/Rworkshop_Brazil/shaRk-workshop/Code") #this is my file path to the brain.data dataset, notes the / forward slashes
+
+#use the read.csv function to pull your csv file into R
+#here we are creating an object called data and defining that object as your csv file
+data <- read.csv("brain.data.csv")
+
+#take a look at all of  the data
+data
+
+#the function head let's you look at the first 6 entries
+head(data) 
+
+#look at the bottom six entries of your dataframe
+tail(data) 
+
+#look at the column names in your database
+names(data) #NOTE: having spaces or special characters in your database or column names is not a good idea!
+
+#To look at one column of your database, use the $ key
+data$species
+data$family
+#the $ acts as a way to query the database, you will get an error is the column name is spelt wrong, doesn't exist
+
+#write out code to subset, from the database data, the column superorder
+head(data)
+
+#other useful ways to look at your data include
+#what do these do?
+class(data)
+str (data)
+dim(data)
+length(data)
+
+#Let's find the maximum value of brain mass in the dataset from the column brain.mass 
+max(data$brain.mass)
+
+#create an object "a" that is the max brain size
+a <-max(data$brain.mass)
+
+#how do I find out what the new object a is?
+a
+
+#write out the code for finding the smallest brain size in the database
+min(data$brain.mass)
+mean(data$brain.mass)
+
+#Create a new column in your database that is called newcolumn and consists of the character "Rworkshop"
+data$newcolumn <- "Rworkshop"
+
+#overwrite the "newcolumn" with body mass divided by 1000 
+data$newcolumn <- data$body.mass/1000
+
+#how can you see the names of the columns in the database?
+names(data)
+head(data)
+
+#Find the number of unique species in the database
+#what column can we find the speies names?
+names(data)
+length(data$species) #tells us the number of species in the database but not the number of unique species
+length(unique(data$species))
+
+#Create a new object that is only includes on Family
+#First, what is the column name that has the Family names in it
+names(data)
+
+#Second, how many different families are included int the database
+length(unique(data$family))
+
+#what are the different families
+unique(data$family)
+
+#now use the subset function to create a new database called rajidae and subset the column family to only inlucde "Rajidae"
+rajidae <- subset(data, data$family =="Rajidae")
+head(rajidae)
+
+#how many entries are in your database now?
+dim(rajidae)
+
+#Do this again, but now create a database that is all families BUT rajidae
+norajidae <- subset(data, data$family != "Rajidae")
+head(norajidae)
+dim(rajidae)
+
+#Do this again, but now create a database that is ONLY rajidae AND Myliobatidae
+mylioraji <- subset(data, data$family == "Rajidae"| data$family == "Myliobatidae")
+head(mylioraji)
+dim(mylioraji)
+
+#Get more information on the function "subset"
+?subset
+
+#Create a new object called noduplicates and define it as data but with rows with duplicated species names removed
+noduplicates <- data[!duplicated(data$species),]
+
+#Create a new database that has only the columns telecephalon, medulla, and species
+newdata <- data[,c("telecephalon", "medulla", "species")]
+
+#Create a new database that has only has the 1,10,and 30 row
+newdata <- data[c(1,10,30),]
+
+```
+
+##Libraries
+```{r}
+#In R you can load packages from librarys where script has already been written
+#first you need to install the package
+install.packages("tidyverse")
+
+#you will be asked to select a mirror four your download, select Canada, BC
+
+#lets load in a package
+library(tidyverse) #you will have to load the library each time you open R but only install the package once
+
+#if you want to get some more information about the package
+help(package = "tidyverse")
+
+#if you use a package get the citation by using
+citation("tidyverse")
+
+```
+
+
+##Summarizing
+```{r}
+
+#summarise and mutate
+#%>%
+
+datamean<-data %>% group_by(family) %>% summarise(fammean <- mean(body.mass)) %>% ungroup
+datamean
+
+#what is datamean?
+
+#Instead of creating a new data.frame with summarize, you can add a column using mutate
+datamean<-data %>% group_by(family) %>% mutate(fammean <- mean(body.mass)) %>% ungroup
+datamean
+
+#create a new database that summarizes data, and has a new column that counts the number of species that are lecithotrophic or matrotrophic
+countlm<-data %>% group_by(reproductive.mode) %>% summarize(numspecies = length(species)) %>% ungroup
+countlm
+
+```
+
+##Introduction to ggplot
+
+```{r ggplot}
+install.packages ("ggplot2") 
+library(ggplot) 
+
+ggplot(data,aes(x=body.mass,y=brain.mass))+
+  geom_point()
+
+#colour the points according to whether the species is lecithotrophic or matrotrophic
+
+ggplot(data,aes(x=body.mass,y=brain.mass))+
+  geom_point(aes(colour = as.factor(reproductive.mode)))
+
+#Add a line to the points
+ggplot(data,aes(x=body.mass,y=brain.mass))+
+  geom_point(aes(colour = as.factor(reproductive.mode))) +
+  geom_line()
+
+#make the lines the same colour as the dots
+ggplot(data,aes(x=body.mass,y=brain.mass))+
+  geom_point(aes(colour= reproductive.mode)) +
+  geom_line(aes(colour= reproductive.mode)) 
+
+#define your own colours
+ggplot(data,aes(x=log(body.mass),y=log(brain.mass)))+
+  geom_point(aes(colour= reproductive.mode)) +
+  geom_line(aes(colour= reproductive.mode))  +
+  scale_color_manual(name = "reproductive.mode",
+                     values = c("Lecithotrophic" = "red",
+                                  "Matrotrophic" = "blue")) +
+  xlab("Body mass")+ylab("Brain Mass") +
+  theme_classic() 
+
+```
+
+##Introduction to stats
+```{r}
+head(data)
+names(data)
+
+t.test(data$brain.mass~data$Species)
+#what is this error message?
+#how do you subset the data for two species?
+
+unique(data$family)
+
+#t.test for 2 species at a time
+mylioraj <-subset(data, data$family =="Rajidae"
+                         | data$family == "Myliobatidae")
+
+head(mylioraj)
+t.test(mylioraj$telecephalon~mylioraj$family)
+
+#run a t-test to see if brain.mass is different between the two reproductive modes
+t.test(data$brain.mass~data$reproductive.mode)
+plot(data$brain.mass~data$reproductive.mode)
+
+#try an anova to test for difference in brain.mass betweem all families
+# Make sure subject column is a factor, so that it's not treated as a continuous
+# variable.
+str(data)
+#ours is a factor but if it wasn't you would run:
+data$family <- factor(data$family)
+
+aov1 <- aov(brain.mass ~ family, data=data) 
+summary(aov1)
+model.tables(aov1, "means")
+boxplot(brain.mass ~ family, data=data)
+
+#what about family and habitat
+aov2 <- aov(body.mass ~ family*habitat, data=data) 
+summary(aov2)
+model.tables(aov2, "means")
+
+aov2 <- aov(body.mass ~ family+habitat, data=data) 
+summary(aov2)
+model.tables(aov2, "means")
+
+
+#linear model
+lm(telecephalon ~ medulla, data= data)
+
+#plot
+plot(telecephalon ~ medulla, data= data)
+
+#plot the data, make it look good, add a title etc.
+plot(telecephalon ~ medulla, data = data, pch=21, 
+     bg=c("red","green3","blue")[unclass(data$reproductive.mode)], 
+     main="Brain data", xlab="telecephalon", ylab="medulla")
+
+abline(lm(telecephalon ~ medulla , data = data), col="black")
 ```
 
 
