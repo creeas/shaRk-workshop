@@ -13,16 +13,38 @@ output:
     highlight: pygments
 ---
 
-#Introduction to Workshop
-Anything under heading 1 will appear in the floating table of contents (all heading 1 will auto populate the TOC)
+#Introduction to R programming Workshop June 03 2018
+
+##What we will cover today
+This course is intended for people who are interested in learning the basics of programming using the R statistical programming language. No experience in R or programming is necessary! Whether you are an early career scientist or a professional looking to expand your skill set, this course will open the door to a powerful tool that is quickly becoming the gold standard in the biological sciences and essential for analyzing ecological data. This course will cover the basics of programming in R, including writing code, loading data, data manipulation (subset, min, max, summary tables), data visualization, elementary data analysis (e.g. t-test, anovas), and linear modeling. It will also provide a guide to get you acquainted with the (seemingly endless) resources available online, which will help you continue learning about R.
 
 ##Who we are
-These heading 2 entries will expand when you are on this section of the tutorial
+<center>
+
+![**Dr. Dovi Kacev**  
+From ugly duckling  
+to competent programmR  
+Shark scientist too  
+](images/Dovi.png)
+
+![**Lindsay Davidson**
+Lindsay wants to get your science R-ipped! She has done the heavy-lifting of learning R and has worked tirelessly on her curls and push-ups to get the dplyr pipes that will change the way you do science. Outside of the gym, she works to inform conservation and management priorities for shark and ray species.](images/Lindsay.png)
+
+![**Dr. Seb Pardo**
+As a member of Team Cannonball, Seb will help you program in R efficiently to ensure your code flies! When not going Bayesian, he spends his time working with R code studying a broad range of taxa, from birds, to sharks, rays, and even Atlantic salmon.](images/Seb.png)
+
+![**Dr. Christopher Mull**
+Chris (AKA Drsharkbrain) spends his time shreddin’ the gnar and codin’ in R. When he isn’t busy studying shark and ray brains at Simon Fraser University he can be found in the studio, RStudio, laying that sweet RMarkdown. Chris has spent too many years of his life painstakingly crafting the most radical code and exploring the deep mysteries of the shark and ray tree of life. He is sure to help make your functions the object of envy for all in your workspace.](images/Chris.png)
+
+</center>
 
 ##Other stuff
+For today you will need to have access to a computer with the latest version of [R (v3.3 or greater)](https://www.r-project.org/) and the latest version of [R studio](https://www.rstudio.com/) installed.
 
+#Using R
 
-#R Basics, Objects, Operators
+##R Basics, Objects, Operators
+
 ```{r R basics}
 #Annote your files by using # before the text 
 #save you R code with ctrl s
@@ -64,7 +86,7 @@ y
 
 #if you run the following line of code, what happens?
 #what does the error message mean?
-a<-3*
+#a<-3*
 
 
   
@@ -81,12 +103,12 @@ a<-3*
 
 #You can set the working directory (setwd) so that R will automatically check that folder. If you file is not in the folder that you setwd to, you will get an error
 
-getwd() #what working directory is R working from?
-setwd("C:/Rworkshop_Brazil/shaRk-workshop/Code") #this is my file path to the brain.data dataset, notes the / forward slashes
+#getwd() #what working directory is R working from?
+#setwd("C:/Rworkshop_Brazil/shaRk-workshop/Code") #this is my file path to the brain.data dataset, notes the / forward slashes
 
 #use the read.csv function to pull your csv file into R
 #here we are creating an object called data and defining that object as your csv file
-data <- read.csv("brain.data.csv")
+data <- read.csv("Data/brain.data.csv")
 
 #take a look at all of  the data
 data
@@ -189,7 +211,7 @@ newdata <- data[c(1,10,30),]
 ```{r}
 #In R you can load packages from librarys where script has already been written
 #first you need to install the package
-install.packages("tidyverse")
+#install.packages("tidyverse")
 
 #you will be asked to select a mirror four your download, select Canada, BC
 
