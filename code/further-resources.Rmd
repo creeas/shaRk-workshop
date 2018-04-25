@@ -1,0 +1,50 @@
+---
+title: "shaRk-workshop - Further resources"
+author: "Sebastian Pardo"
+date: "April 25, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Further resources
+
+One of the most important things to learn as you're beginning to use R is to 
+**learn to learn**; that is, to be able to answer (or find the answer) to the endless
+questions that you'll have as you dwelve deeper into this programming language and its 
+tools.
+
+
+### CRAN's Introduction to R 
+
+This is the "official" Introduction to R document developed by the creators of R.
+It is pretty comprehensive while using a language that caters more towards programmers:
+
+<https://cran.r-project.org/doc/manuals/R-intro.pdf>
+
+### Swirl
+
+[Swirl](http://swirlstats.com/) is an interactive R package that lets you learn R, in R.
+It consists of modules you load and run via the R console: 
+
+```{r eval=FALSE}
+install.packages("swirl")
+library("swirl")
+swirl()
+```
+
+### Stack Overflow
+
+I'd a safe bet that if you have a beginner-level R question it has already
+been asked online, and it's most likely on [Stack Overflow](http://stack-overflow.com). 
+There are over [235,000 questions](https://stackoverflow.com/questions/tagged/r) relating to R on that site alone!
+
+Everybody is welcome to post new questions, however first check that you're not duplicate
+a question that has been previously asked/answered. Also, provide a **Minimum Working Example** (MWE)
+that reproduces the hurdle you're trying to overcome. Provide a dummy dataset if necessary!
+
+
+
+
