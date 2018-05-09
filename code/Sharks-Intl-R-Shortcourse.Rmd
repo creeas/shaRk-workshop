@@ -50,17 +50,17 @@ For today you will need to have access to a computer with the latest version of 
 ##R Basics, Objects, Operators
 Annote your files by using # before the text. Save you R code with ctrl s. Note your objects will not be saved, just your R script!  
 
-Create an object a using the <-
+Create an object `a` using the `<-` syntax. Here you are creating an object called `a` that is the sume of 1+1.
 ```{r R basics}
 a <- 1+1
 ```
 
-What is `a`
+What is `a`?
 ```{r}
 a
 ```
 
-Create a new object called a and overwrite the old a - note R will not tell you if you overwrite an object
+Create a new object called `a` and overwrite the old a - **note** R will not tell you if you overwrite an object.
 ```{r}
 a <- 10
 ```
@@ -70,15 +70,22 @@ What is the new value of `a`?
 a
 ```
 
-
-Create an object with more than one value, the 'c' stands for concatenate.
+Objects can be a number, character, string of numbers, matrix, etc. Here, you can create an object with more than one value, the 'c' stands for concatenate.
 ```{r}
 b <- c(10,1,6,0)
+
+char <- "charactertext"
+
+stringofchar <- c("sharks", "rays", "chimaeras")
 ```
 
-What is stored in your object `b`?
+What is stored in your object `b`, `char`, and `stringofchar`?
 ```{r }
 b
+
+char
+
+stringofchar
 
 ```
 
@@ -90,7 +97,6 @@ a
 
 ```
 
-
 Overwrite `b` to be object `a`
 ```{r}
 b <- a
@@ -98,7 +104,7 @@ b <- a
 b
 ```
 
-You can also define objects using math operators
+You can also define objects using math operators, `*` is multiplication. 
 ```{r}
 a<-3*3
 
@@ -117,18 +123,13 @@ You can also use other operators such as mean, sum, min, and max.
 ```{r}
 x <- mean(a)
 
-x
-
 y <-sum(a)
-
-y
 
 y <-max(a)
 
-y
 ```
 
-Write out two ways to create an object `z` that is the sum of 1,2,3,4,5,6,7
+Write out two ways to create an object `z` that is the sum of 1,2,3,4,5,6,7.
 ```{r}
 z<- sum(1,2,3,4,5,6,7,8)
 
@@ -141,11 +142,10 @@ If you run the following line of code, what happens? Look at the error message -
 a<-3*
 ```
 
-
 ##Importing
-Load up the .csv file called brain.data.csv. R works with .csv files as opposed to excel files .xls or .xlsx.  
-In your File Explorer navigate to the folder where your save the brain.data.csv file.  
-You can set the working directory (setwd) so that R will automatically check that folder when you load up files. If you file is not in the folder that you setwd to, you will get an error message. 
+Load up a .csv file called `brain.data.csv`. R works with .csv files as opposed to excel files (.xls or .xlsx).  
+In your File Explorer navigate to the folder where your save the `brain.data.csv` file.  
+You can set the working directory `setwd` so that R will automatically check that folder when you load up files. If you file is not in the folder that you `setwd` to, you will get an error message. 
 
 Check what the working directory is. Remember, the working directory is the folder on your computer that R will look for files in.  
 ```{r}
@@ -153,40 +153,38 @@ getwd()
 
 ```
 
-Change the working directory (wd) to the folder with the brain.data.csv file. Note, in R the file paths have forward slashes. Such as C:/Workshop
+Change the working directory (wd) to the folder with the `brain.data.csv` file. **Note** in R the file paths have forward slashes. Such as C:/Workshop
 ```{r, eval=FALSE}
-
-setwd("C:/Rworkshop_Brazil/shaRk-workshop/Code") 
+setwd("C:/your-file-path/shaRk-workshop/Code") 
 
 ```
 
-Use the read.csv function to pull your .csv file into R. Here we are creating an object called `data` and defining that object as your .csv file
+Use the `read.csv` function to pull your .csv file into R. Here we are creating an object called `data` and define that object as your .csv file
 ```{r importing data}
 data <- read.csv("C:/C.drive/Rworkshop_Brazil_2018/shaRk-workshop/data/brain.data.csv")
 ```
 
-Take a look at all of  the data
+Take a look at at your `data` object.
 ```{r}
 data
 ```
 
-That is a lot to look at..use the head function to look at the first 6 rows of your object `data`
+That is a lot to look at..use the `head` function to look at the first 6 rows of your object `data` and `tail` to look at the last six rows.
 ```{r}
 head(data)
-```
 
-Use the `tail` function to look at the bottom 6 rows of your object `data`.
-```{r}
 tail(data)
 ```
 
-Look at the column names in your database. **NOTE** having spaces or special characters in your database or column names is not a good idea! Remove them beforehand and replace with "." or "_".
+Look at the column names in your database. **NOTE** having spaces or special characters in your database or column names is not a good idea! Remove them and replace with "." or "_".
 ```{r}
 names(data)
 ```
 
-To look at one column of your database, use the `$`.
+Use the `$`to query a column in your object `data`. If you want to look just at the column names in the `data` object, use the `names`function. 
 ```{r}
+
+names(data)
 
 data$species
 
@@ -194,12 +192,12 @@ data$family
 
 ```
 
-The $ acts as a way to query the database, you will get an error is the column name is spelt wrong or doesn't exist.
+The $ acts as a way to query the database, you will get an error is the column name is spelt wrong or doesn't exist. 
 ```{r, meesage=TRUE, error=TRUE}
 data$Species
 ```
 
-Write out code to subset, from the database data, the column `superorder`:
+Write out code to query the column called `superorder`:
 ```{r, eval=FALSE}
 data$superorder
 ```
@@ -224,7 +222,7 @@ a <-max(data$brain.mass)
 
 ```
 
-What is `a`
+What is the value of `a`?
 ```{r}
 a
 ```
@@ -237,19 +235,13 @@ mean(data$brain.mass)
 
 ```
 
-Create a new column in your database that is called `newcolumn` and is defined as the  character "Rworkshop".
-```{r}
-data$newcolumn <- "Rworkshop"
-
-```
-
-Overwrite `newcolumn` with body mass divided by 1000.
+Create a new column in your database that is called `newcolumn` and is defined as the column `body mass` divided by 1000.
 ```{r}
 data$newcolumn <- data$body.mass/1000
 
 ```
 
-Find the number of unique species in the database.  
+Find the number of unique species in the `data` object.   
 First, what is the name of the column that has the speies names?  
 ```{r}
 names(data)
@@ -268,39 +260,29 @@ length(unique(data$species))
 
 ```
 
-Create a new object that is only includes on Family.
-First, what is the column name that has the Family names in it?
+Create a new object that is only the unique family names in `data`.
+First, find the column that has the family names by using `names`.
 ```{r}
 names(data)
 ```
 
-Second, how many different families are included int the database
+Second, create a new object called uniquefam and define it a the unique names from the family column. 
 ```{r}
 
-length(unique(data$family))
+uniquefam <- unique(data$family)
 ```
 
-What are the different families
+Now use the `subset` function to create a new database. Make the database only those entires under the column `family` that are **Rajidae**. Call the new database `rajidaedata`. **NOTE** the `==` syntax.
 ```{r}
-unique(data$family)
-
-```
-
-Now use the `subset` function to create a new database. Make the database only those entires under the column `family` that are **Rajidae**. Call the new database `rajidaedata`.
-```{r}
-
 rajidaedata <- subset(data, data$family =="Rajidae")
-
 ```
 
 How many entries are in the `rajidaedata` database?
 ```{r}
-
 dim(rajidaedata)
-
 ```
 
-Now create a database that is all families **BUT** rajidae. Use the != syntax.
+Now create a database that is all families **BUT** rajidae. Use the `!=` syntax. with ! meaning does not equal.
 ```{r}
 
 norajidae <- subset(data, data$family != "Rajidae")
@@ -320,18 +302,26 @@ To get more information on a function, use the ? and then the function name.
 
 ```
 
-Create a new object called `noduplicates` and remove rows with duplicated species names removed. Use the ! syntax to specific that the rows cannot be duplicates. 
+ The square brackets `[]` are a way to subset vectors or dataframes. The database has two dimenions - rows and columns, and cal be references seperately or together and are seperated by a comma. You can also use the `:` to mean through.
 ```{r}
+data[1,]
 
-noduplicates <- data[!duplicated(data$species),]
+data[,1]
 
+data[1,1]
+
+data[1:10,1:10]
 ```
 
-Create a new database that has only the columns `telecephalon`, `medulla`, and `species`. Note when you are using the square bracket syntax, you call up [row, column].
+Create a new object called `noduplicates` and remove rows with duplicated species names removed. Use the ! syntax to specific that the rows cannot be duplicates.
 ```{r}
+noduplicates <- data[!duplicated(data$species),]
+```
 
+
+Create a new database that has only the columns `telecephalon`, `medulla`, and `species`. 
+```{r}
 newdata <- data[,c("telecephalon", "medulla", "species")]
-
 ```
 
 Create a new database that has only has the 1,10,and 30th row.
@@ -351,7 +341,6 @@ You will be asked to select a mirror four your download, select your location. N
 
 ```{r}
 library(tidyverse) 
-
 ```
 
 If you want to get some more information about the package use the `help` function. 
@@ -367,37 +356,70 @@ citation("tidyverse")
 
 
 ##Summarizing
-Summarise and mutate. %>%
+#dplyr is a package that will make filtering, subsetting, summarizing, and transforming your data much, much easier. It is less verbose that other packages and is simple too implement. 
+There are a number of functions within the `dplyr` package such as:  `select`  `filter`  `summarize`  `mutate`  `group_by`
+Let's first use the select function.  `select` is a way to choose columns of a database. Here, you can select just one column called `species`, two columns (`species` and `family`) or all columns from `species` to `family`. Use `?select` to get more information.  
+```{r}
+names(data)
 
+data_spp <- select(data, species)
+
+data_sppfam <- select(data, species, family)
+
+data_sel <- select(data, species:family)
+
+```
+
+Instead of using the `subset` function that we used above. `dplyr` has a similar function called `filter`. The advantage with the `filter` function is that it is less verbose and more powerful. As with `subset` you can use the operators:  `==`  `>`  `<`  `<=`  `!=` and others. You can also use `&` for multiple criteria, `|` for meeting optional criteria (this or this). 
+```{r}
+head(data)
+
+data_batoids <- filter(data, tribe == "Batoids")
+
+data_bigbrain <- filter(data, brain.mass > mean(brain.mass))
+
+data_reefbigbrain <- filter(data, habitat == "Reef" & brain.mass>= mean(brain.mass))
+
+head(data_reefbigbrain)
+```
+
+You can use the %in% to filter based on finding values in a string or another database. Here I create a string of 5 randomly selected species and filter the database based on those 5 species. 
+```{r}
+fivespp <- data[sample(1:35,5), "species"]
+
+data_5spp <- filter(data, species %in% fivespp) 
+```
+
+`Summarise` is a function that will create a new database summarizing your data. `mutate` will add a new column to your database.  
+```{r}
+summarise(data, length(unique(species)))
+
+mutate(data, length(unique(species)))
+
+```
+
+*Pipes `%>%`. You can perform calculations (summarize, mutate, etc.) on subsets of the data (using `group_by`) and then put that database back together. The `%>%` syntax lets you perform multiple functions. The `group-by` syntax specifies how you want the database split. Above, we counted the number of unique species in the database. Here, we are going to count the number of unique species in each of the superorders and put the results in a new database. 
 ```{r}
 
-datamean<-data %>% group_by(family) %>% summarise(fammean <- mean(body.mass)) %>% ungroup
+numspp<-data %>% group_by(superorder) %>% summarize(NumSpecies = length(species))
 
 
 ```
 
-Here you have created a new database, that has the mean `body.mass` per family. 
+Instead of creating a new data.frame with `summarize`, you can add a column using `mutate`
 ```{r}
-head(datamean)
-```
-
-Instead of creating a new data.frame with summarize, you can add a column using mutate
-```{r}
-
-data %>% group_by(family) %>% mutate(fammean <- mean(body.mass)) %>% ungroup
-
-```
-
-Look at you data, you will see you have a new column called `fammean` that has the mean `body.mass` per family. However, the database has not changed otherwise. 
-```{r}
+data <- data %>% group_by(superorder) %>% mutate(NumSpecies = length(species))
 head(data)
 ```
 
 Create a new database that summarizes `data` and has a new column that counts the number of species that are lecithotrophic or matrotrophic. Use the `names(data)` to see the column names and use the `length` fucntion to count the number of species.  
 ```{r}
+countlm<-data %>% group_by(reproductive.mode) %>% summarize(numspecies = length(species))
+```
 
-countlm<-data %>% group_by(reproductive.mode) %>% summarize(numspecies = length(species)) %>% ungroup
-
+Create a new database that calculates the mean `brain.mass` of the four superorders but exlude the Carcharhiniformes. 
+```{r}
+mean<-data %>% group_by(superorder) %>% filter(family != "Carcharhiniformes") %>% summarize(meanbrainmass = mean(brain.mass))
 ```
 
 
