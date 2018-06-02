@@ -16,8 +16,23 @@ One of the most important things to learn as you're beginning to use R is to
 questions that you'll have as you dwelve deeper into this programming language and its 
 tools.
 
+### R's help files
 
-### CRAN's Introduction to R 
+Every function in R is required to have an associated help file fully explains what the function does, what its inputs are (arguments), and what the outputs are (values). A lot of people are intimidated by these functions, but they are actually really helpful! For example, the help file for the `mean` function:
+
+```{r}
+?mean
+```
+
+If you want to search for something that is not a function, you can use the `??` to search for a term:
+
+```{r}
+??average
+```
+
+This will show all the functions from the packages you have installed that mention the search term. The more installed packages, the more potential terms that will be shown.
+
+### CRAN's Introcduction to R 
 
 This is the "official" Introduction to R document developed by the creators of R.
 It is pretty comprehensive while using a language that caters more towards programmers:
@@ -45,6 +60,7 @@ Everybody is welcome to post new questions, however first check that you're not 
 a question that has been previously asked/answered. Also, provide a **Minimum Working Example** (MWE)
 that reproduces the hurdle you're trying to overcome. Provide a dummy dataset if necessary!
 
+## Google
 
-
+Lastly, whenever you get an error message you don't understand, googling the e message + function name + CRAN (the R package repository) will usually return questions and answers written by other people about the same or a similar issues.
 
