@@ -1,0 +1,60 @@
+Useful R packages for elasmonerds
+======
+
+  
+Most researchers presenting at this conference are using R for their data analyses, and to do them they also use a suite of R packages to meet their specific data analysis needs. We think it would be useful to all of you to have a list of packages that researchers use for shark-related analyses. As a reminder, you install a a package with `install.packages()` and load it 
+with `library()`.
+
+This list is definitely not exhaustive, but it's a good place to start!:
+
+### Multivariate analyses
+
+- `vegan`
+
+### Phylogenetic analysis
+
+- `phytools` (caper, ape, etc...)
+- `geiger`
+- `diversitree`
+
+### Bayesian data analysis
+
+- `rjags`
+- `rstan`
+
+### Spatial analyses
+
+- `sp`
+- `adehabitatHR`
+- `raster`
+
+### Tracking data
+
+- `VTrack`
+
+### Demographic analyses
+
+- `demogR`
+
+### REALLY large datasets
+
+- `data.table`
+
+### Working with dates
+
+- `lubridate`
+
+### Easy integration with ggplot()
+
+- `ggmap`
+- `ggtree`
+
+### Mixed effects models
+
+- `nlme`
+- `lme4`
+- `MCMCglmm`
+
+### Installing packages not in CRAN (e.g. Github)
+
+- `devtools` (install using `install_github()` function)
