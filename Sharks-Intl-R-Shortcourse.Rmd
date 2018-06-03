@@ -3,10 +3,6 @@ title: "Introduction to R 2018 Workshop"
 author: 'null'
 date: 'null'
 output:
-  word_document:
-    toc: yes
-  pdf_document:
-    toc: yes
   html_document:
     depth: 5
     highlight: pygments
@@ -14,6 +10,10 @@ output:
     theme: spacelab
     toc: yes
     toc_float: yes
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
 subtitle: Sharks International
 ---
 
@@ -91,7 +91,7 @@ stringofchar
 
 How do you create an object `a` that is two values 1 and 2?
 ```{r}
-a<-c(1,2)
+a<-c(1,2) #Note to self
 
 a
 
@@ -155,13 +155,13 @@ getwd()
 
 Change the working directory (wd) to the folder with the `brain.data.csv` file. **Note** in R the file paths have forward slashes. Such as C:/Workshop
 ```{r, eval=FALSE}
-setwd("C:/your-file-path/shaRk-workshop/Code") 
+#setwd("C:/your-file-path/shaRk-workshop/Code") 
 
 ```
 
 Use the `read.csv` function to pull your .csv file into R. Here we are creating an object called `data` and define that object as your .csv file
 ```{r importing data}
-data <- read.csv("C:/C.drive/Rworkshop_Brazil_2018/shaRk-workshop/data/brain.data.csv")
+data <- read.csv("data/brain.data.csv")
 ```
 
 Take a look at at your `data` object.
