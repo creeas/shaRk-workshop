@@ -237,7 +237,7 @@ mean(data$brain.mass)
 
 Create a new column in your database that is called `newcolumn` and is defined as the column `body mass` divided by 1000.
 ```{r}
-data$newcolumn <- data$body.mass/1000
+data$bodymasskg <- data$body.mass/1000
 
 ```
 
@@ -355,8 +355,9 @@ citation("tidyverse")
 ```
 
 
-##Summarizing
-#dplyr is a package that will make filtering, subsetting, summarizing, and transforming your data much, much easier. It is less verbose that other packages and is simple too implement. 
+##Summarizing and Data Wrangling with Dplyr
+
+dplyr is a package that will make filtering, subsetting, summarizing, and transforming your data much, much easier. It is less verbose that other packages and is simple too implement. 
 There are a number of functions within the `dplyr` package such as:  `select`  `filter`  `summarize`  `mutate`  `group_by`
 Let's first use the select function.  `select` is a way to choose columns of a database. Here, you can select just one column called `species`, two columns (`species` and `family`) or all columns from `species` to `family`. Use `?select` to get more information.  
 ```{r}
