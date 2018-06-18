@@ -1,7 +1,7 @@
 ---
-title: "Introduction to R 2018 Workshop"
-author: 'null'
-date: 'null'
+title: "Introduction to R Workshop"
+date: 'June 3rd, 2018'
+author: "Lindsay Davison, Seb Pardo, Chris Mull, Dovi Kacev"
 output:
   html_document:
     depth: 5
@@ -14,15 +14,16 @@ output:
     toc: yes
   word_document:
     toc: yes
-subtitle: Sharks International
+subtitle: Sharks International 2018
 ---
 
-#Introduction to R programming Workshop June 03 2018
+# Introduction to R programming Workshop June 03 2018
 
-##What we will cover today
+## What we will cover today
+
 This course is intended for people who are interested in learning the basics of programming using the R statistical programming language. No experience in R or programming is necessary! Whether you are an early career scientist or a professional looking to expand your skill set, this course will open the door to a powerful tool that is quickly becoming the gold standard in the biological sciences and essential for analyzing ecological data. This course will cover the basics of programming in R, including writing code, loading data, data manipulation (subset, min, max, summary tables), data visualization, elementary data analysis (e.g. t-test, anovas), and linear modeling. It will also provide a guide to get you acquainted with the (seemingly endless) resources available online, which will help you continue learning about R.
 
-##Who we are
+## Who we are
 <center>
 
 ![**Dr. Dovi Kacev**  
@@ -42,17 +43,19 @@ Chris (AKA Drsharkbrain) spends his time shreddin’ the gnar and codin’ in R.
 
 </center>
 
-##Other stuff
-For today you will need to have access to a computer with the latest version of [R (v3.3 or greater)](https://www.r-project.org/) and the latest version of [R studio](https://www.rstudio.com/) installed.
+## Other stuff
 
-#Using R
+For today you will need to have access to a computer with the latest version of [R (v3.3 or greater)](https://www.r-project.org/) and the latest version of [RStudio](https://www.rstudio.com/) installed.
 
-##R Basics, Objects, Operators
-Annote your files by using # before the text. Save you R code with ctrl s. Note your objects will not be saved, just your R script!  
+# Using R
 
-Create an object `a` using the `<-` syntax. Here you are creating an object called `a` that is the sume of 1+1.
+## R Basics, Objects, Operators
+
+Annote your files by using # before the text. Save you R code with ctrl-s. Note your objects will not be saved, just your R script!  
+
+Create an object `a` using the `<-` syntax. Here you are creating an object called `a` that is the sum of 1+1.
 ```{r R basics}
-a <- 1+1
+a <- 1 + 1
 ```
 
 What is `a`?
@@ -60,7 +63,7 @@ What is `a`?
 a
 ```
 
-Create a new object called `a` and overwrite the old a - **note** R will not tell you if you overwrite an object.
+Create a new object called `a` and overwrite the old a - **note**: R will not tell you if you overwrite an object.
 ```{r}
 a <- 10
 ```
@@ -70,9 +73,9 @@ What is the new value of `a`?
 a
 ```
 
-Objects can be a number, character, string of numbers, matrix, etc. Here, you can create an object with more than one value, the 'c' stands for concatenate.
+Objects can be a number, character, string of numbers, matrix, etc. Here, you can create an object with more than one value, the `c` stands for concatenate.
 ```{r}
-b <- c(10,1,6,0)
+b <- c(10, 1, 6, 0)
 
 char <- "charactertext"
 
@@ -80,7 +83,7 @@ stringofchar <- c("sharks", "rays", "chimaeras")
 ```
 
 What is stored in your object `b`, `char`, and `stringofchar`?
-```{r }
+```{r}
 b
 
 char
@@ -91,7 +94,7 @@ stringofchar
 
 How do you create an object `a` that is two values 1 and 2?
 ```{r}
-a<-c(1,2) #Note to self
+a <- c(1, 2) #Note to self
 
 a
 
@@ -106,14 +109,14 @@ b
 
 You can also define objects using math operators, `*` is multiplication. 
 ```{r}
-a<-3*3
+a <- 3*3
 
 a
 ```
 
 Use math operators to define a string of value. 
 ```{r}
-a <- c(1+2,10*10,1-1)
+a <- c(1 + 2, 10*10, 1 - 1)
 
 a
 
@@ -123,26 +126,27 @@ You can also use other operators such as mean, sum, min, and max.
 ```{r}
 x <- mean(a)
 
-y <-sum(a)
+y <- sum(a)
 
-y <-max(a)
+y <- max(a)
 
 ```
 
 Write out two ways to create an object `z` that is the sum of 1,2,3,4,5,6,7.
 ```{r}
-z<- sum(1,2,3,4,5,6,7,8)
+z <- sum(1, 2, 3, 4, 5, 6, 7, 8)
 
-z<- (1+2+3+4+5+6+7+8)
+z <- 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8
 
 ```
 
 If you run the following line of code, what happens? Look at the error message - what does it mean?
 ```{r, error=TRUE, warning=TRUE, message=TRUE}
-a<-3*
+a <- 3*
 ```
 
-##Importing
+## Importing data
+
 Load up a .csv file called `brain.data.csv`. R works with .csv files as opposed to excel files (.xls or .xlsx).  
 In your File Explorer navigate to the folder where your save the `brain.data.csv` file.  
 You can set the working directory `setwd` so that R will automatically check that folder when you load up files. If you file is not in the folder that you `setwd` to, you will get an error message. 
@@ -150,13 +154,11 @@ You can set the working directory `setwd` so that R will automatically check tha
 Check what the working directory is. Remember, the working directory is the folder on your computer that R will look for files in.  
 ```{r}
 getwd() 
-
 ```
 
 Change the working directory (wd) to the folder with the `brain.data.csv` file. **Note** in R the file paths have forward slashes. Such as C:/Workshop
 ```{r, eval=FALSE}
 #setwd("C:/your-file-path/shaRk-workshop/Code") 
-
 ```
 
 Use the `read.csv` function to pull your .csv file into R. Here we are creating an object called `data` and define that object as your .csv file
@@ -169,7 +171,7 @@ Take a look at at your `data` object.
 data
 ```
 
-That is a lot to look at..use the `head` function to look at the first 6 rows of your object `data` and `tail` to look at the last six rows.
+That is a lot to look at! Use the `head` function to look at the first 6 rows of your object `data`, and `tail` to look at the last six rows.
 ```{r}
 head(data)
 
@@ -192,7 +194,7 @@ data$family
 
 ```
 
-The $ acts as a way to query the database, you will get an error is the column name is spelt wrong or doesn't exist. 
+The $ acts as a way to query the database, you will get an error is the column name is spelt wrong or doesn't exist. Note that column names are case sensitive!: 
 ```{r, meesage=TRUE, error=TRUE}
 data$Species
 ```
@@ -205,7 +207,7 @@ data$superorder
 You may want to know other details about the type of data in your database. What do the following lines of code tell you about your database?
 ```{r, eval=FALSE}
 class(data)
-str (data)
+str(data)
 dim(data)
 length(data)
 ```
@@ -218,7 +220,7 @@ max(data$brain.mass)
 
 Create an object `a` that is the maximum brain size in `data`.
 ```{r}
-a <-max(data$brain.mass)
+a <- max(data$brain.mass)
 
 ```
 
@@ -245,19 +247,16 @@ Find the number of unique species in the `data` object.
 First, what is the name of the column that has the speies names?  
 ```{r}
 names(data)
-
 ```
 
 Second, use the `length` function to tell us how many entries are in the database. Does this tell us the number of unique species names?
 ```{r}
 length(data$species)
-
 ```
 
 Use the `unique` function and the `length` function to count the number of unique species names
 ```{r}
 length(unique(data$species))
-
 ```
 
 Create a new object that is only the unique family names in `data`.
@@ -268,13 +267,14 @@ names(data)
 
 Second, create a new object called uniquefam and define it a the unique names from the family column. 
 ```{r}
-
 uniquefam <- unique(data$family)
 ```
 
+## Indexing and subsetting
+
 Now use the `subset` function to create a new database. Make the database only those entires under the column `family` that are **Rajidae**. Call the new database `rajidaedata`. **NOTE** the `==` syntax.
 ```{r}
-rajidaedata <- subset(data, data$family =="Rajidae")
+rajidaedata <- subset(data, data$family == "Rajidae")
 ```
 
 How many entries are in the `rajidaedata` database?
@@ -282,56 +282,62 @@ How many entries are in the `rajidaedata` database?
 dim(rajidaedata)
 ```
 
-Now create a database that is all families **BUT** rajidae. Use the `!=` syntax. with ! meaning does not equal.
+Now create a database that is all families **BUT** Rajidae. Use the `!=` syntax. with ! meaning does not equal.
 ```{r}
-
 norajidae <- subset(data, data$family != "Rajidae")
-
 ```
 
 Do this again, but now create a database that is ONLY Rajidae **AND** Myliobatidae. Call the new database `mylioraji`
 ```{r}
-
-mylioraji <- subset(data, data$family == "Rajidae"| data$family == "Myliobatidae")
-
+mylioraji <- subset(data, data$family == "Rajidae" & data$family == "Myliobatidae")
 ```
+
+
 
 To get more information on a function, use the ? and then the function name. 
 ```{r, eval=FALSE}
 ?subset
-
 ```
 
- The square brackets `[]` are a way to subset vectors or dataframes. The database has two dimenions - rows and columns, and cal be references seperately or together and are seperated by a comma. You can also use the `:` to mean through.
+
+ The square brackets `[]` are another way to subset vectors or data frames. The dataset has two dimensions - rows and columns, which can be referenced seperately or together and are seperated by a comma. You can also use the `:` to mean through.
 ```{r}
-data[1,]
+data[1, ] # first row
 
-data[,1]
+data[, 1] # first column
 
-data[1,1]
+data[1, 1] # first row and first column
 
-data[1:10,1:10]
+data[1:10, 1:10] # first 10 rows and first 10 columns
 ```
 
-Create a new object called `noduplicates` and remove rows with duplicated species names removed. Use the ! syntax to specific that the rows cannot be duplicates.
+Create a new object called `noduplicates` and remove rows with duplicated species names removed. Use the ! syntax to specific that the rows cannot be duplicates. The function `duplicated()` will help you achieve this.
 ```{r}
-noduplicates <- data[!duplicated(data$species),]
+noduplicates <- data[!duplicated(data$species), ]
 ```
 
-
-Create a new database that has only the columns `telecephalon`, `medulla`, and `species`. 
+Create a new dataset that has only the columns `telecephalon`, `medulla`, and `species`. 
 ```{r}
-newdata <- data[,c("telecephalon", "medulla", "species")]
+newdata <- data[, c("telecephalon", "medulla", "species")]
 ```
 
-Create a new database that has only has the 1,10,and 30th row.
+Create a new dataset that has only has the 1st, 10th, and 30th rows.
 ```{r}
-
-newdata <- data[c(1,10,30),]
-
+newdata <- data[c(1, 10, 30), ]
 ```
 
-##Libraries
+## Exporting data
+
+To save data frames to a file outside of R we can use the `write.csv` function`, which stores
+a data frame or matrix as a .csv object in your working directory:
+
+```{r, eval = FALSE}
+write.csv(newdata, file = "output.csv")
+```
+
+
+## Libraries
+
 In R you can load packages where scripts and functions have already been written. To use a library, you first need to install the package. You use the `install.packages` function and specify the package inside the " ". Here we are loading in the `tidyverse` package. Note, you will have to load the library each time you open R but only install the package once.
 ```{r, eval=FALSE}
 install.packages("tidyverse")
@@ -351,15 +357,16 @@ help(package = "tidyverse")
 If you use a package, use the `citation` function to get the proper attibution. 
 ```{r}
 citation("tidyverse")
-
 ```
 
 
-##Summarizing and Data Wrangling with Dplyr
+## Summarizing and data wrangling with `dplyr`
 
-dplyr is a package that will make filtering, subsetting, summarizing, and transforming your data much, much easier. It is less verbose that other packages and is simple too implement. 
-There are a number of functions within the `dplyr` package such as:  `select`  `filter`  `summarize`  `mutate`  `group_by`
-Let's first use the select function.  `select` is a way to choose columns of a database. Here, you can select just one column called `species`, two columns (`species` and `family`) or all columns from `species` to `family`. Use `?select` to get more information.  
+`dplyr` is a package which is loaded by `tidyverse` that will make filtering, subsetting, summarizing, and transforming your data much, much easier. It is less verbose that other packages and is very intuititve, which makes it easy to use.
+The main functions within the `dplyr` package are `select`, `filter`, `summarize`, `mutate`, and `group_by`.
+
+Let's first use the `select` function. As the name suggests, `select` is a way to select columns of a database. Here, you can select just one column called `species`, two columns (`species` and `family`) or all columns from `species` to `family` using the "through" (`:`) command. Use `?select` to get more information.  
+
 ```{r}
 names(data)
 
@@ -368,145 +375,201 @@ data_spp <- select(data, species)
 data_sppfam <- select(data, species, family)
 
 data_sel <- select(data, species:family)
-
 ```
 
-Instead of using the `subset` function that we used above. `dplyr` has a similar function called `filter`. The advantage with the `filter` function is that it is less verbose and more powerful. As with `subset` you can use the operators:  `==`  `>`  `<`  `<=`  `!=` and others. You can also use `&` for multiple criteria, `|` for meeting optional criteria (this or this). 
+Instead of using the `subset` function that we used above. `dplyr` has a similar function called `filter`. The advantage with the `filter` function is that it is less verbose and more powerful. As with `subset` you can use the operators:  `==`  `>`  `<`  `<=`  `!=` and others. You can also use `&` for multiple criteria, `|` for meeting optional criteria (this OR this). 
+
 ```{r}
 head(data)
+```
 
+Using `head` is still quite messy if you have many columns. One trick to display data in a nicer way: use the `tbl_df` function. This will provide a neat preview of a large data frame that is adjusted to fit your screen:
+
+```{r}
+data <- tbl_df(data)
+data
+```
+
+Now on with the `filter` function:
+```{r}
 data_batoids <- filter(data, tribe == "Batoids")
 
 data_bigbrain <- filter(data, brain.mass > mean(brain.mass))
 
-data_reefbigbrain <- filter(data, habitat == "Reef" & brain.mass>= mean(brain.mass))
+data_reefbigbrain <- filter(data, habitat == "Reef" & brain.mass >= mean(brain.mass))
 
 head(data_reefbigbrain)
 ```
 
-You can use the %in% to filter based on finding values in a string or another database. Here I create a string of 5 randomly selected species and filter the database based on those 5 species. 
+You can use the `%in%` function to filter based on finding values in a string or another database. Here I create a string of 5 randomly selected species and filter the database based on those 5 species:
 ```{r}
 fivespp <- data[sample(1:35,5), "species"]
 
 data_5spp <- filter(data, species %in% fivespp) 
 ```
 
-`Summarise` is a function that will create a new database summarizing your data. `mutate` will add a new column to your database.  
+`mutate` will preform a transformation of your data and add a new column with the resulting values:
 ```{r}
-summarise(data, length(unique(species)))
-
-mutate(data, length(unique(species)))
-
+mutate(data, logbodymasskg = log(bodymasskg)) 
 ```
 
-*Pipes `%>%`. You can perform calculations (summarize, mutate, etc.) on subsets of the data (using `group_by`) and then put that database back together. The `%>%` syntax lets you perform multiple functions. The `group-by` syntax specifies how you want the database split. Above, we counted the number of unique species in the database. Here, we are going to count the number of unique species in each of the superorders and put the results in a new database. 
+`summarise` is a function that will create a new dataset summarizing your data:
 ```{r}
-
-numspp<-data %>% group_by(superorder) %>% summarize(NumSpecies = length(species))
-
-
+summarise(data, n = length(unique(species)))
 ```
 
-Instead of creating a new data.frame with `summarize`, you can add a column using `mutate`
+This doesn't make much sense, as it is easier to obtain the total number of species using `length(unique(data$species))`. The `summarise` function is really powerful when used in conjuction with
+`group_by`, which as the name suggest groups the data within the dataset so that opperations are done separately
+for each group:
+
 ```{r}
-data <- data %>% group_by(superorder) %>% mutate(NumSpecies = length(species))
-head(data)
+summarise(group_by(data, order), n = length(unique(species)))
+```
+
+
+**Pipes** `%>%`. You can perform calculations (summarize, mutate, etc.) on subsets of the data (using `group_by`) and then put that database back together. The pipe function (`%>%`) lets you perform multiple functions one after the other in a way that is more intuititve than nesting functions inside another. The `group_by` syntax specifies how you want the database split. Above, we counted the number of unique species in the database. Here, we are going to count the number of unique species in each of the superorders and put the results in a new data frame. 
+```{r}
+
+numspp <- data %>% 
+  group_by(superorder) %>% 
+  summarize(NumSpecies = length(species))
+
+numspp
 ```
 
 Create a new database that summarizes `data` and has a new column that counts the number of species that are lecithotrophic or matrotrophic. Use the `names(data)` to see the column names and use the `length` fucntion to count the number of species.  
+
 ```{r}
-countlm<-data %>% group_by(reproductive.mode) %>% summarize(numspecies = length(species))
+countlm <- data %>% 
+  group_by(reproductive.mode) %>% 
+  summarize(numspecies = length(species))
 ```
 
 Create a new database that calculates the mean `brain.mass` of the four superorders but exlude the Carcharhiniformes. 
 ```{r}
-mean<-data %>% group_by(superorder) %>% filter(family != "Carcharhiniformes") %>% summarize(meanbrainmass = mean(brain.mass))
+mean <- data %>% 
+  group_by(superorder) %>% 
+  filter(family != "Carcharhiniformes") %>% 
+  summarize(meanbrainmass = mean(brain.mass))
+```
+
+Now some more complex operations...
+
+Let's say we want to estimate the average brain mass as well as the standard deviation of the distribution and sample size for each family we can group by family and then summarize to obtain the desired metrics:
+
+```{r}
+summarydata <- data %>%
+  group_by(family) %>%
+  summarise(mean = mean(brain.mass), 
+            sd = sd(brain.mass),
+            n = n())
+
+summarydata
+```
+
+To view more rows we can use the `print` function:
+
+```{r}
+summarydata %>% print(n = 22)
+```
+
+If we wanted to obtain relative brain mass as well as log body mass for everything except chimaeras
+we can do that with `filter` and `mutate`, and use `select` to only show the desired columns:
+```{r}
+summarydata2 <- data %>%
+  tbl_df %>%
+  filter(tribe != "Chimaeras")  %>%
+  mutate(rel.mass = brain.mass/body.mass,
+         log.body.mass = log(body.mass)) %>%
+  select(tribe, family, species,rel.mass, log.body.mass)
+
+summarydata2
 ```
 
 
-##Introduction to ggplot
-Install the package `ggplot` and load the library. Also use ?ggplot to see more information about this library. 
+## Introduction to `ggplot2`
+
+Install the package `ggplot2` and load the library. Also use `?ggplot` to see more information about this library. 
 
 ```{r ggplot, eval=FALSE}
-install.packages ("ggplot2") 
+install.packages("ggplot2") 
 library(ggplot2) 
 ```
 
-ggplot is an easy way to plot you data. 
-```{r}
-ggplot(data,aes(x=body.mass,y=brain.mass))+
-  geom_point()
+The `ggplot` function provides an intuitive way to plot you data. The first argument you have to give
+is the dataset we'll be using (in this case the `data` object), followed by the aesthetic of the plot, i.e. 
+the x and y-axes, and any other grouping we'd like to highlight. The `ggplot` function on its own
+doesn't plot any points/lines, which is why we need to provide additional functions to add data points on lines; this is done using the `+` function: 
 
+```{r}
+ggplot(data, aes(x = body.mass, y = brain.mass)) +
+  geom_point() # add points
 ```
 
 Colour the points according to whether the species is lecithotrophic or matrotrophic.
 ```{r}
-ggplot(data,aes(x=body.mass,y=brain.mass))+
-  geom_point(aes(colour = as.factor(reproductive.mode)))
-
+ggplot(data,aes(x = body.mass,y = brain.mass)) +
+  geom_point(aes(colour = reproductive.mode))
 ```
 
-Add a line to the points
+This can be more easily be specified in the `aes()` section in the `ggplot` statement:
 ```{r}
-ggplot(data,aes(x=body.mass,y=brain.mass))+
-  geom_point(aes(colour = as.factor(reproductive.mode))) +
+ggplot(data,aes(x = body.mass,y = brain.mass, colour = reproductive.mode)) +
+  geom_point()
+```
+
+Add a line to the points:
+```{r}
+ggplot(data,aes(x = body.mass,y = brain.mass, colour = reproductive.mode)) +
+  geom_point() +
   geom_line()
 
 ```
 
-Make the lines the same colour as the dots
-```{r}
-ggplot(data,aes(x=body.mass,y=brain.mass))+
-  geom_point(aes(colour= reproductive.mode)) +
-  geom_line(aes(colour= reproductive.mode)) 
 
-```
-
-Define your own colours
+Define your own colours, label axes, and select a theme (these are `ggplot` functions starting with `theme_`: 
 ```{r}
-ggplot(data,aes(x=log(body.mass),y=log(brain.mass)))+
-  geom_point(aes(colour= reproductive.mode)) +
-  geom_line(aes(colour= reproductive.mode))  +
+ggplot(data,aes(x = body.mass,y = brain.mass, colour = reproductive.mode)) +
+  geom_point() +
   scale_color_manual(name = "reproductive.mode",
                      values = c("Lecithotrophic" = "red",
                                   "Matrotrophic" = "blue")) +
-  xlab("Body mass")+ylab("Brain Mass") +
-  theme_classic() 
+  xlab("Body mass") + ylab("Brain Mass") +
+  theme_classic() # there are many other themes to choose from!
 
 ```
 
 
-##Introduction to stats
-Run a t-test on you data. What is the error message?
+## Basic introduction to stats in R
+
+Run a t-test on you data. Note that you can specify analyses in R in most functions using 
+a formula notation (see `?formula` for more information). 
+This has the `~` symbol which denotes "by". In the case below,
+we are trying to compare brain mass **by** species. However, what is the error message?
 ```{r, message=TRUE, error=TRUE}
-t.test(data$brain.mass~data$species)
-
-
+t.test(data$brain.mass ~ data$species)
 ```
 
-The error message is telling you that you have more than 2 levels, ie two species in your database. Therefore subset the database to include only 2 species. 
+
+The error message is telling you that you have more than 2 levels, i.e. more than two species in your dataset. Therefore subset the dataset to include only 2 species. 
 ```{r}
-mylioraj <-subset(data, data$family =="Rajidae"
-                         | data$family == "Myliobatidae")
+mylioraj <- subset(data, data$family %in% c("Rajidae", "Myliobatidae"))
 ```
 
-Now run the t.test
+Now run the t.test:
 ```{r}
-t.test(mylioraj$telecephalon~mylioraj$family)
-
+t.test(mylioraj$telecephalon ~ mylioraj$family)
 ```
 
 Run a t-test to see if brain.mass is different between the two reproductive modes.
 ```{r}
-t.test(data$brain.mass~data$reproductive.mode)
-plot(data$brain.mass~data$reproductive.mode)
-
+t.test(data$brain.mass ~ data$reproductive.mode)
+plot(data$brain.mass ~ data$reproductive.mode)
 ```
 
 Try an anova to test for difference in brain.mass betweem all families. Make sure subject column is a factor, so that it's not treated as a continuous variable. 
 ```{r}
 str(data)
-
 ```
 
 Ours is a factor but if it wasn't you would run:
@@ -517,66 +580,66 @@ data$family <- factor(data$family)
 
 Run the anova
 ```{r}
-aov1 <- aov(brain.mass ~ family, data=data) 
+aov1 <- aov(brain.mass ~ family, data = data) 
 
 ```
 
-Check the output. 
+Check the output. You can use the `boxplot` function from base R to plot the data:
 ```{r}
 summary(aov1)
 model.tables(aov1, "means")
-boxplot(brain.mass ~ family, data=data)
-
+boxplot(brain.mass ~ family, data = data)
 ```
 
 
-Run an anove between family and habitat. 
+Run an anove between family and habitat. In formulas, you can use the `+` symbol
+to add more variables. In the case below, compare body mass **by** family **and** habitat:
 ```{r}
-aov2 <- aov(body.mass ~ family*habitat, data=data) 
+aov2 <- aov(body.mass ~ family + habitat, data = data) 
 summary(aov2)
 model.tables(aov2, "means")
-
 ```
 
 
-Run an anova
+Run an anova:
 ```{r}
-aov2 <- aov(body.mass ~ family+habitat, data=data) 
+aov2 <- aov(body.mass ~ family + habitat, data = data) 
 summary(aov2)
 model.tables(aov2, "means")
-
-
 ```
 
+### Linear models/regressions
+
+The `lm` function provides the basic functionality in R to do simple linear regressions. It is a very important
+function to understand given that most other analyses (GLMS, mixed-effect models, etc.) use the same syntax as
+the `lm` function (the formula structure), and are basically extensions of it.
 
 Run a linear model with the `lm` function. 
 ```{r}
-lm(telecephalon ~ medulla, data= data)
-
+lm(telecephalon ~ medulla, data = data)
 ```
 
 Create a plot that has telecephalon on the y-axis and medulla on the x-axis. 
 ```{r}
-plot(telecephalon ~ medulla, data= data)
+plot(telecephalon ~ medulla, data = data)
 
 ```
 
 
-Plot the data, make it look good, add a title etc. Add a line that shows the model outputs using the `abline` function with the lm nested. 
+Plot the data, make it look good, add a title etc. Add a line that shows the model outputs 
+using the `abline` function with the `lm` function nested within it. We are also using the 
+`plot` function from base R, which as you can see is less intuitive than `ggplot`:
 ```{r}
-plot.new
-plot(telecephalon ~ medulla, data = data, pch=21, 
-     bg=c("red","green3","blue")[unclass(data$reproductive.mode)], 
-     main="Brain data", xlab="telecephalon", ylab="medulla")
+plot(telecephalon ~ medulla, data = data, pch = 21, 
+     bg = c("red","green3","blue")[unclass(data$reproductive.mode)], 
+     main = "Brain data", xlab = "telecephalon", ylab = "medulla")
 
-abline(lm(telecephalon ~ medulla , data = data), col="black")
-
-
+abline(lm(telecephalon ~ medulla , data = data), col = "black")
 ```
-
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the
+R code that generated the plot.

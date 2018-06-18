@@ -32,7 +32,16 @@ If you want to search for something that is not a function, you can use the `??`
 
 This will show all the functions from the packages you have installed that mention the search term. The more installed packages, the more potential terms that will be shown.
 
-### CRAN's Introcduction to R 
+### Vignettes
+
+The function `vignette` provides written tutorials for specific packages/function. To see the full list of vignettes type `vignette()`. To load a specific vignette, you can specify the name of the vignette provided in the list:
+
+```{r, eval = FALSE}
+vignette("tidy-data")
+```
+
+
+### CRAN's Introduction to R 
 
 This is the "official" Introduction to R document developed by the creators of R.
 It is pretty comprehensive while using a language that caters more towards programmers:

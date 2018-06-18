@@ -57,4 +57,4 @@ This list is definitely not exhaustive, but it's a good place to start!:
 
 ### Installing packages not in CRAN (e.g. Github)
 
-- `devtools` (install using `install_github()` function)
+- `devtools` (to install using the `install_github()` function)

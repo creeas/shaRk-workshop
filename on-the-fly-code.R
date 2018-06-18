@@ -13,7 +13,7 @@ mylioraji <- subset(data, data$family == "Rajidae"|
                       data$ == "Myliobatidae")
 mylioraji
 
-write.csv(mylioraji, file = "output.csv")
+
 
 subset(data, data$family %in% 
          c("Rajidae", "Myliobatidae"))
@@ -30,17 +30,22 @@ summarise(group_by(data, tribe), length(unique(species)))
 summarise(group_by(data, family), whatever = mean(brain.mass),
           n = n())
 
+# if we wanted to estimate the average brain mass as well as the standard deviation of the distribution of each family we can group by family and then summarize to obtain the desired metrics:
+
 summarydata <- data %>%
   group_by(family) %>%
   summarise(mean = mean(brain.mass), 
             sd = sd(brain.mass),
             n = n())
 
+# To see more rows we can use the `print` function:
 summarydata %>% print(n = 22)
 
 
 str(data)
 glimpse(data)
+
+# If we wanted to obtain relative brain mass as well as log body mass we can do that with 
 
 tribe <- data %>%
   tbl_df %>%
